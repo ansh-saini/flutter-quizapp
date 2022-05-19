@@ -1,0 +1,7 @@
+{
+  "dart.lineLength": 150,
+  "[dart]": {
+    "editor.rulers": [1000]
+  },
+  "editor.formatOnSave": true,
+}
