@@ -10,6 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
+      stream: AuthService().userStream,
       builder: ((context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Text("Loading");
