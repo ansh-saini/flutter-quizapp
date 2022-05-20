@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:quizapp/routes.dart';
 import 'package:quizapp/firebase_options.dart';
+import 'package:quizapp/theme.dart';
 
 // void main() async {
 //   runApp(const MyApp());
@@ -38,23 +39,20 @@ class _MyAppState extends State<MyApp> {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
-          return Text('error');
+          return const MaterialApp(title: 'error');
         }
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             routes: appRoutes,
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            title: 'Quiz App',
+            theme: appTheme,
           );
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Text('loading');
+        return const MaterialApp(title: 'error');
       },
     );
   }

@@ -8,7 +8,10 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          child: const Text("Click me"),
+          child: Text(
+            "Go to about",
+            style: Theme.of(context).textTheme.button,
+          ),
           onPressed: () => Navigator.pushNamed(context, '/about'),
         ),
       ),
