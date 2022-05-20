@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/login/login.dart';
+import 'package:quizapp/topics/topics.dart';
+import 'package:quizapp/services/auth.dart';
 import 'package:quizapp/shared/bottom_nav.dart';
 
 class Home extends StatelessWidget {
@@ -6,17 +9,19 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          child: Text(
-            "Go to about",
-            style: Theme.of(context).textTheme.button,
-          ),
-          onPressed: () => Navigator.pushNamed(context, '/about'),
-        ),
-      ),
-      bottomNavigationBar: const BottomNaviagation(),
+    return StreamBuilder(
+      builder: ((context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text("Loading");
+        }
+        if (snapshot.hasError) {
+          return const Text("Error");
+        }
+        if (snapshot.hasData) {
+          return const Topics();
+        }
+        return const Login();
+      }),
     );
   }
 }
