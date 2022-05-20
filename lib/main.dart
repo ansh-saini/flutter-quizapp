@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
-          return const MaterialApp(title: 'error');
+          return Text('error');
         }
 
         // Once complete, show your application
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return const MaterialApp(title: 'error');
+        return Text('loading');
       },
     );
   }

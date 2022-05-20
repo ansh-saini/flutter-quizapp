@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/shared/bottom_nav.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class Home extends StatelessWidget {
           onPressed: () => Navigator.pushNamed(context, '/about'),
         ),
       ),
+      bottomNavigationBar: const BottomNaviagation(),
     );
   }
 }
