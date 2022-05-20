@@ -5,6 +5,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("Home");
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("Click me"),
+          onPressed: () => Navigator.pushNamed(context, '/about'),
+        ),
+      ),
+    );
   }
 }

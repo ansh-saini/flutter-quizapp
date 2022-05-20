@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:quizapp/routes.dart';
+import 'package:quizapp/firebase_options.dart';
 
 // void main() async {
 //   runApp(const MyApp());
@@ -43,6 +44,7 @@ class _MyAppState extends State<MyApp> {
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
+            routes: appRoutes,
             title: 'Flutter Demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,
