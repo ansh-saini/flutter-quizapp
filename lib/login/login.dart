@@ -24,7 +24,13 @@ class Login extends StatelessWidget {
                 text: 'Continue as Guest',
                 loginMethod: AuthService().anonLogin,
               ),
-            )
+            ),
+            LoginButton(
+              text: 'Sign in with Google',
+              icon: FontAwesomeIcons.google,
+              color: Colors.blue,
+              loginMethod: AuthService().googleLogin,
+            ),
           ],
         ),
         padding: const EdgeInsets.all(30),
