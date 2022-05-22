@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'package:quizapp/routes.dart';
 import 'package:quizapp/firebase_options.dart';
+import 'package:quizapp/services/firestore.dart';
+import 'package:quizapp/services/models.dart';
 import 'package:quizapp/theme.dart';
 
 // void main() async {
@@ -44,11 +47,15 @@ class _MyAppState extends State<MyApp> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            routes: appRoutes,
-            title: 'Quiz App',
-            theme: appTheme,
+          return StreamProvider(
+            create: (_) => FirestoreService().streamReport(),
+            initialData: Report(),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              routes: appRoutes,
+              title: 'Quiz App',
+              theme: appTheme,
+            ),
           );
         }
 
