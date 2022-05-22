@@ -4,6 +4,7 @@ import 'package:quizapp/shared/loading.dart';
 import 'package:quizapp/shared/error.dart';
 import 'package:quizapp/services/firestore.dart';
 import 'package:quizapp/services/models.dart';
+import 'package:quizapp/topics/topic_item.dart';
 
 class Topics extends StatelessWidget {
   const Topics({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class Topics extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
-                children: topics.map((topic) => Text(topic.title)).toList(),
+                children: topics.map((topic) => TopicItem(topic: topic)).toList(),
               ),
             );
           } else {
