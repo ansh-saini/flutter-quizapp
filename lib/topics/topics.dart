@@ -4,6 +4,7 @@ import 'package:quizapp/shared/loading.dart';
 import 'package:quizapp/shared/error.dart';
 import 'package:quizapp/services/firestore.dart';
 import 'package:quizapp/services/models.dart';
+import 'package:quizapp/topics/drawer.dart';
 import 'package:quizapp/topics/topic_item.dart';
 
 class Topics extends StatelessWidget {
@@ -26,6 +27,7 @@ class Topics extends StatelessWidget {
                 backgroundColor: Colors.deepPurple,
                 title: const Text("Topics"),
               ),
+              drawer: TopicDrawer(topics: topics),
               body: GridView.count(
                 primary: false,
                 padding: const EdgeInsets.all(20),
