@@ -11,7 +11,7 @@ class TopicDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView.separated(
-        itemBuilder: (BuildContext context, int idx) {
+        itemBuilder: (context, idx) {
           Topic topic = topics[idx];
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +28,7 @@ class TopicDrawer extends StatelessWidget {
           );
         },
         separatorBuilder: (context, idx) => const Divider(),
-        itemCount: 2,
+        itemCount: topics.length,
       ),
     );
   }

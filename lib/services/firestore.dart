@@ -9,17 +9,17 @@ class FirestoreService {
 
   /// Reads all documments from the topics collection
   Future<List<Topic>> getTopics() async {
-    var ref = _db.collection('topics');
-    var snapshot = await ref.get();
-    var data = snapshot.docs.map((s) => s.data());
-    var topics = data.map((d) => Topic.fromJson(d));
+    final ref = _db.collection('topics');
+    final snapshot = await ref.get();
+    final data = snapshot.docs.map((s) => s.data());
+    final topics = data.map((d) => Topic.fromJson(d));
     return topics.toList();
   }
 
   /// Retrieves a single quiz document
   Future<Quiz> getQuiz(String quizId) async {
-    var ref = _db.collection('quizzes').doc(quizId);
-    var snapshot = await ref.get();
+    final ref = _db.collection('quizzes').doc(quizId);
+    final snapshot = await ref.get();
     return Quiz.fromJson(snapshot.data() ?? {});
   }
 
@@ -27,7 +27,7 @@ class FirestoreService {
   Stream<Report> streamReport() {
     return AuthService().userStream.switchMap((user) {
       if (user != null) {
-        var ref = _db.collection('reports').doc(user.uid);
+        final ref = _db.collection('reports').doc(user.uid);
         return ref.snapshots().map((doc) => Report.fromJson(doc.data()!));
       } else {
         return Stream.fromIterable([Report()]);
@@ -37,10 +37,10 @@ class FirestoreService {
 
   /// Updates the current user's report document after completing quiz
   Future<void> updateUserReport(Quiz quiz) {
-    var user = AuthService().user!;
-    var ref = _db.collection('reports').doc(user.uid);
+    final user = AuthService().user!;
+    final ref = _db.collection('reports').doc(user.uid);
 
-    var data = {
+    final data = {
       'total': FieldValue.increment(1),
       'topics': {
         quiz.topic: FieldValue.arrayUnion([quiz.id])
