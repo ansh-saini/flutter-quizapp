@@ -35,6 +35,7 @@ class Topics extends StatelessWidget {
                 crossAxisSpacing: 10,
                 children: topics.map((topic) => TopicItem(topic: topic)).toList(),
               ),
+              bottomNavigationBar: const BottomNaviagation(),
             );
           } else {
             return const Text('No topics found in Firestore. Check database');
